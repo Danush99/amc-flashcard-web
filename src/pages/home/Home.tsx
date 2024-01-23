@@ -3,7 +3,7 @@ export default function HomePage() {
   return (
     <>
       <div>
-AMC
+AMC Home
       </div>
     </>
   )
