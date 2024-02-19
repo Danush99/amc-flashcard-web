@@ -5,6 +5,5 @@ export { PrivacyStatement } from './privacyStatement'
 export { TermsAndConditionsPage } from './termsAndConditions'
 export { ForgotPassword } from './forgotPassword'
 export { StripePaymentPage } from './paymentGateway'
-export { ReduxExamplePage } from './reduxExample'
 export { ErrorPage } from './error'
 

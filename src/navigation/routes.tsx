@@ -5,7 +5,6 @@ import {
   StripePaymentPage,
   TermsAndConditionsPage,
   ErrorPage,
-  ReduxExamplePage,
   PrivacyStatement,
   About,
   Contact,
@@ -54,10 +53,6 @@ const router = createBrowserRouter([
     element: (
     <ErrorPage/>
     )
-  },
-  {
-    path: '/redux',
-    element: <ReduxExamplePage />
   },
 ]);
 
