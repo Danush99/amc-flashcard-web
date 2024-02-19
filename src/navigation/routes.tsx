@@ -5,7 +5,11 @@ import {
   StripePaymentPage,
   TermsAndConditionsPage,
   ErrorPage,
-  ReduxExamplePage
+  ReduxExamplePage,
+  PrivacyStatement,
+  About,
+  Contact,
+  ForgotPassword
  } from 'src/pages';
 
 const router = createBrowserRouter([
@@ -14,17 +18,33 @@ const router = createBrowserRouter([
     element: <HomePage />
   },
   {
-    path: '/tnc',
+    path: '/tc',
     element: <TermsAndConditionsPage />
   },
   {
-    path: '/redux',
-    element: <ReduxExamplePage />
+    path: '/ps',
+    element: <PrivacyStatement />
   },
   {
-    path: '/stripePay',
+    path: '/about',
+    element: <About />
+  },
+  {
+    path: '/contact',
+    element: <Contact />
+  },
+  {
+    path: '/forgotPassword/:token',
     element: (
-      <ProtectedRoute permissions={['ADMIN,USER']}>
+      <ProtectedRoute permissions={['ADMIN','USER']}>
+        <ForgotPassword />
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: '/stripePay/:token',
+    element: (
+      <ProtectedRoute permissions={['ADMIN','USER']}>
         <StripePaymentPage />
       </ProtectedRoute>
     )
@@ -34,7 +54,13 @@ const router = createBrowserRouter([
     element: (
     <ErrorPage/>
     )
-  } 
+  },
+  {
+    path: '/redux',
+    element: <ReduxExamplePage />
+  },
 ]);
 
 export default router;
+
+// http://localhost:5173/forgotPassword/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiYXNqZm5pa3NqZG5mMzJyNGZlIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiU2lyaXdhcmRlbmEiLCJpc1ByZW1pdW0iOmZhbHNlfQ.h2ysq7xwBullnT9HkNtQTpH5GBww_bntLiGfAbKAR4k

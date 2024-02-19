@@ -1,17 +1,18 @@
 import { Box, Toolbar } from "@mui/material";
-import { DrawerAppBar } from "src/components";
+import { DrawerAppBar, PasswordResetForm } from "src/components";
 
-export default function StripePaymentPage() {
+export default function ForgotPassword() {
 
-    return (
+
+  return (
       <>
         <DrawerAppBar/>
         <Box component="main" sx={{ p: 3 }}>
           <Toolbar />
-           Stripe Payment
+          <PasswordResetForm/>
         </Box>
       </>
-    )
-  }
+  )
+}
   
   
