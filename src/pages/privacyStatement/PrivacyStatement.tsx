@@ -35,8 +35,8 @@ export default function PrivacyStatement() {
 
               {
                 (item.content).map((content,index2)=>(
-                  <>
-                  <Grid container alignItems="center" key={index2}>
+                  <Box  key={index2}>
+                  <Grid container alignItems="center">
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <Grid item xs={0}>
                       <StarPurple500Icon />
@@ -53,7 +53,7 @@ export default function PrivacyStatement() {
                     </Grid>
                   </Grid>
                   {(item.content).length !== index2 + 1 && <Divider sx={{ my: 1 }}/> }
-                  </>
+                  </Box>
                 ))
               }
               <br/><br/>
