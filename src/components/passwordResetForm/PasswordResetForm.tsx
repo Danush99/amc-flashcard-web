@@ -16,7 +16,7 @@ import { AppDispatch, RootState } from "src/redux/store";
 import {
   removeUser,
 } from "src/redux/user";
-import SnackBar, { SnackBarDetails } from 'src/components/SnackBar';
+import { SnackBarDetails } from 'src/components/SnackBar';
 import { CircularProgress } from '@mui/material';
 import { ResetPassword } from 'src/types';
 import { resetPassword } from 'src/services';
@@ -37,24 +37,28 @@ function Copyright(props: any) {
 
 const defaultTheme = createTheme();
 
+interface PasswordResetFormPropsType {
+  setSuccessReset: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowSnackBar: React.Dispatch<React.SetStateAction<boolean>>;
+  setSnackBarDetails: React.Dispatch<React.SetStateAction<SnackBarDetails>>;
+}
 
-export default function PasswordResetForm() {
+
+export default function PasswordResetForm(props : PasswordResetFormPropsType) {
+    const {setSuccessReset,setSnackBarDetails,setShowSnackBar} = props
     const user = useSelector((state: RootState) => state.user.user);
     const dispatch = useDispatch<AppDispatch>();
     const [loader, setLoader] = useState(false);
-    const [showSnackBar, setShowSnackBar] = useState(false);
-    const [snackBarDetails, setSnackBarDetails] = useState<SnackBarDetails>({
-      message: '',
-      severity: 'success'
-    });
 
     const handleReset = async (data: ResetPassword) => {
-      console.log('data: ',data)
         setLoader(true);
         try {
-          await resetPassword(data);
+          await resetPassword(data,user.accessToken);
           if (user) {
             dispatch(removeUser());
+            setSuccessReset(true)
+            setSnackBarDetails({ severity: 'success', message: 'You have reset the password successfully' });
+            setShowSnackBar(true);
           } else {
             setSnackBarDetails({ severity: 'error', message: 'Something went wrong please try again later!' });
             setShowSnackBar(true);
@@ -92,13 +96,6 @@ export default function PasswordResetForm() {
     return (
         <ThemeProvider theme={defaultTheme}>
 
-        <SnackBar
-            open={showSnackBar}
-            message={snackBarDetails.message}
-            severity={snackBarDetails.severity}
-            handleClose={() => setShowSnackBar(false)}
-        />
-
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Box
@@ -117,7 +114,7 @@ export default function PasswordResetForm() {
             </Typography>
 
             <Typography component="h1" variant="h6">
-                Hi, {user.firstName} ! Reset your password: Reclaim access to your account by resetting your password. 
+                Hi, {user?.firstName} ! Reset your password: Reclaim access to your account by resetting your password. 
             </Typography>
 
             <Box             

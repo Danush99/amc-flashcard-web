@@ -3,7 +3,7 @@ export type User = {
     firstName?: string;
     lastName?: string;
     role?: string;
-    isPremium?: boolean;
+    is_Premium?: boolean;
     accessToken?: string;
     refreshToken?: string;
   };

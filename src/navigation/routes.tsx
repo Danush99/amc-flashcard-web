@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     element: <Contact />
   },
   {
-    path: '/forgotPassword/:token',
+    path: 'user/reset-password/:token',
     element: (
       <ProtectedRoute permissions={['ADMIN','USER']}>
         <ForgotPassword />
@@ -58,4 +58,5 @@ const router = createBrowserRouter([
 
 export default router;
 
-// http://localhost:5173/forgotPassword/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiYXNqZm5pa3NqZG5mMzJyNGZlIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiU2lyaXdhcmRlbmEiLCJpc1ByZW1pdW0iOmZhbHNlfQ.h2ysq7xwBullnT9HkNtQTpH5GBww_bntLiGfAbKAR4k
+// http://localhost:5173/user/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiYXNqZm5pa3NqZG5mMzJyNGZlIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiU2lyaXdhcmRlbmEiLCJpc1ByZW1pdW0iOmZhbHNlfQ.h2ysq7xwBullnT9HkNtQTpH5GBww_bntLiGfAbKAR4k
+// http://localhost:5173/user/reset-password/eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDg0MDc0NzksInN1YiI6ImRhbnVzaDk5b25saW5lQGdtYWlsLmNvbSIsImV4cCI6MTcwODQ5Mzg3OX0.3f3_gwKsOCPo3wNQT4CgkWNyoB34zQzAy0fxPYBSALg
